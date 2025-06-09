@@ -3,61 +3,107 @@
 
 # 1. 팀 소개
 
-### 처음아니조
+
+
+<p align="center">
+  <img src="./team_image.png" alt="처음아니조 팀 이미지" width="300"/>
+</p>
+
+
+<div align="center">
+
+## 처음아니조
+
+
+
 | 기현택 | 김은희 | 서혜선 | 신지혜 | 조태민 |
 |:---:|:---:|:---:|:---:|:---:|
-| <img width="120px" src="" /> | <img width="120px" src="" /> | <img width="120px" src="" /> | <img width="120px" src="" /> | <img width="120px" src="" /> |
 | [@mathplanet](https://github.com/mathplanet) | [@eunhiee](https://github.com/euni92) | [@hyeseon](https://github.com/hyeseon7135) | [@jyedu](https://github.com/JYEDU) | [@sunsnu](https://github.com/sunsnu) |
 
- 
+처음아니조는 SKN 15기 1차 과제를 함께하게 된 팀으로,  
+비록 이번이 첫 프로젝트이지만 **완성도 높은 결과물**을 통해 처음이 아닌 듯한 실력과 협업력을 보여주고자 합니다.
+
+</div>
+
+
+
+
 
 # 2. 프로젝트 개요
 
-####  프로젝트 명
+
+## 📕 프로젝트명
 - 자동차 선호도 분석 및 기업별 FAQ 제공
 
-#### 프로젝트 소개
-- 자동차의 브랜드, 모델, 연령, 연료, 지역, 월별 등 다양한 요소들을 기반으로 자동차의 현재 트렌드를 분석
-- 자동차 기업에서 제공하는 FAQ를 한 눈에 정리하여 볼 수 있도록 서비스를 제공
-
-#### 프로젝트 배경
+## ✅ 프로젝트 배경 및 목적
 - 현재 자동차 시장 관련 정보는 전국 등록 현황이나 연령별 선호도 등이 분산되어 있어 사용자가 연령대별 트렌드와 실제 시장 상황을 통합적으로 파악하기 어려움
 - 본 프로젝트는 이러한 정보의 파편화로 인한 부족함을 해소하고 사용자들에게 더욱 유익한 정보를 제공하기 위해, 연령대별 자동차 선호 트렌드 데이터와 전국 차량 등록 현황, 그리고 사용자들이 궁금해하는 기업별 FAQ 등의 정보를 한데 모아 분석하고 시각화하여 종합적이고 직관적인 정보를 제공하는 것을 목적으로 함
 
 
-#### 기대효과
-    - 자동차 구매를 고려하는 사용자에게 유용한 정보 제공 및 합리적인 의사결정 지원
-    - 자동차 산업 관련 기업에게 시장 트렌드 분석 및 마케팅 전략 수립에 필요한 데이터 제공
-    - 기업별 FAQ 정보를 통해 사용자 편의성 증대
+## 🖐️ 프로젝트 소개
+- 자동차의 브랜드, 모델, 연령, 연료, 지역, 월별 등 다양한 요소들을 기반으로 자동차의 현재 트렌드를 분석
+- 자동차 기업에서 제공하는 FAQ를 한 눈에 정리하여 볼 수 있도록 서비스를 제공
 
-#### 대상 사용자
+
+
+## ❤️ 기대효과
+- 자동차 구매를 고려하는 사용자에게 유용한 정보 제공 및 합리적인 의사결정 지원
+- 자동차 산업 관련 기업에게 시장 트렌드 분석 및 마케팅 전략 수립에 필요한 데이터 제공
+- 기업별 FAQ 정보를 통해 사용자 편의성 증대
+
+
+
+## 👤 대상 사용자
 - 자동차 구매를 고려하는 개인
 - 자동차 산업 관련 시장 분석가 및 관계자
 - 자동차 통계 및 트렌드에 관심 있는 일반 사용자
 
-#### 프로젝트 목표
-- 
 
- 
+
+
 
 # 3. 기술 스택
 
- 
+<img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=Python&logoColor=white">
+<img src="https://img.shields.io/badge/selenium-43B02A?style=for-the-badge&logo=selenium&logoColor=white">
+<img src="https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=MySQL&logoColor=white">
+<img src="https://img.shields.io/badge/streamlit-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white">
+
+<img src="https://img.shields.io/badge/notion-000000?style=for-the-badge&logo=notion&logoColor=white">
+<img src="https://img.shields.io/badge/figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white">
+<img src="https://img.shields.io/badge/discord-5865F2?style=for-the-badge&logo=discord&logoColor=white">
+<img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=GitHub&logoColor=white">
+
+
+
+
 
 # 4. 요구사항 명세서
 
  
 
+
+
 # 5. ERD
 
+
  
+
 
 # 6. 주요 프로시저
 
  
 
+
+
 # 7. 수행결과(테스트/시연 페이지)
+
+
 
  
 
 # 8. 한 줄 회고
+
+
+
+
