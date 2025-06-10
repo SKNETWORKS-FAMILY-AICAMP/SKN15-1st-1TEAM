@@ -56,7 +56,7 @@ with st.sidebar:
 # 1. PAGE: HOME
 if main_selected==menu_list[0]:
     st.title(":house_with_garden: Home Page")
-    st.write("이곳은 홈 화면입니다.")
+    exec(open("./utills/sales_analysis.py", encoding="utf-8").read())
 
 
 # 2. PAGE: RANKING
@@ -96,7 +96,7 @@ if main_selected==menu_list[1]:
 analysis_list=["차종별", '엔진별', "용도별", "지역별"]
 if main_selected==menu_list[2]:
     # 타이틀
-    st.title(f":bar_chart: {menu_list[2]}")
+    st.title(f":chart_with_upwards_trend: {menu_list[2]}")
 
     # 보조 메뉴
     selected_analysis = option_menu(None, analysis_list, 
@@ -111,22 +111,22 @@ if main_selected==menu_list[2]:
 
     # 보조 메뉴별 화면
     if selected_analysis==analysis_list[0]:
-        st.header(f"🚘 {analysis_list[0]} 분석")
+        st.header(f"🚘 {analysis_list[0]} 판매 데이터 분석")
         exec(open("./utills/model_analysis.py", encoding="utf-8").read())
 
 
     if selected_analysis==analysis_list[1]:
-        st.header(f"⛽ {analysis_list[1]} 분석")
-        st.write("태민님 작업중")
+        st.header(f"⛽ {analysis_list[1]} 판매 데이터 분석")
+        exec(open("./utills/engine_analysis.py", encoding="utf-8").read())
 
 
     if selected_analysis==analysis_list[2]:
-        st.header(f"🛠️ {analysis_list[2]} 분석")
+        st.header(f"🛠️ {analysis_list[2]} 판매 데이터 분석")
         exec(open("./utills/top3.py", encoding="utf-8").read())
 
 
     if selected_analysis==analysis_list[3]:
-        st.header(f"🪂 {analysis_list[3]} 분석")
+        st.header(f"🪂 {analysis_list[3]} 판매 데이터 분석")
         exec(open("./utills/region_analysis.py", encoding="utf-8").read())
 
 

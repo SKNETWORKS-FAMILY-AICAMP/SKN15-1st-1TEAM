@@ -30,8 +30,6 @@ def get_car_types():
 
 years = ['전체'] + list(range(2012, 2026))
 
-st.title("차종별 판매 데이터 분석")
-
 car_types = get_car_types()
 final_brands = get_brands()
 
@@ -118,7 +116,7 @@ with tab5:
                     pie_df = pd.concat([top9, other], ignore_index=True)
                 else:
                     pie_df = df_type_valid
-                fig, ax = plt.subplots()
+                fig, ax = plt.subplots(figsize=(4, 4))
                 ax.pie(
                     pie_df['total_volume'],
                     labels=pie_df.apply(
@@ -131,8 +129,10 @@ with tab5:
                     counterclock=False
                 )
                 ax.set_title("")  # 제목 제거
+                ax.axis('equal')
                 plt.figtext(0.5, 0.01, f'총 판매 대수: {total_sum:,}대', ha='center', fontsize=12)
                 st.pyplot(fig)
+
                 # 표
                 pie_df = pie_df.rename(columns={'carType': '차종', 'total_volume': '판매량'})
                 def color_change(val):
@@ -312,7 +312,7 @@ with tab4:
             this_year = pivot.get(current_year)
             valid = this_year.notnull() & (this_year > 0) if this_year is not None else None
             if valid is not None and valid.any():
-                fig, ax = plt.subplots()
+                fig, ax = plt.subplots(figsize=(4, 4))
                 ax.bar(this_year.index[valid], this_year.values[valid], color='green')
                 ax.set_xlabel('월')
                 ax.set_ylabel('판매량')
