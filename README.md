@@ -92,7 +92,9 @@
 # 6. 수행결과(테스트/시연 페이지)
 
 <h3>홈 화면</h3>
-
+<p align="center">
+  <img src="./images/home.png" alt="ERD 이미지" width="60%"/>
+</p>
 
 <br />
 <h3>별별 랭킹 화면</h3>
@@ -102,8 +104,11 @@
 |<img src="./images/age_brand_rank.png" alt="연령대별 브랜드 선호 랭킹 페이지" />|<img src="./images/age_model_rank.png" alt="연령대별 브랜드 선호 랭킹 페이지" />|<img src="./images/age_fuel_rank.png" alt="연령대별 브랜드 선호 랭킹 페이지"/>|
 
 <br />
-<h3> 화면</h3>
+<h3> 선호 트렌드 분석 화면</h3>
 
+|차종별|엔진별|용도별|지역별|
+|------|---|---|---|
+|<img src="./images/trend_car.png" alt="선호 트렌드 분석 차종별 페이지" />|<img src="./images/trend_fuel.png" alt="선호 트렌드 분석 엔진별 페이지" />|<img src="./images/trend_use.png" alt="선호 트렌드 분석 용도별 페이지"/>|<img src="./images/trend_area.png" alt="선호 트렌드 분석 지역별 페이지"/>|
 
  
 
