@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import pymysql
 import plotly.express as px
+from mydb.connectDB import openDB
 
 st.set_page_config(layout="wide")
 st.title("🚗 지역별 차량 등록 트렌드 분석")
@@ -25,6 +26,7 @@ ORDER BY
     D.years, D.months, D.city_1, D.city_2, T.name;
 """
 
+conn=openDB()
 df = pd.read_sql(query, conn)
 conn.close()
 

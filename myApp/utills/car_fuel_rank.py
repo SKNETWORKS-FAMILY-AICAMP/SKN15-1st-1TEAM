@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 import pymysql
+from mydb.connectDB import openDB
 
 # 연령대별 선호 연료 순위
 def fuel_ranking():
@@ -17,7 +18,7 @@ def fuel_ranking():
     cursor = None
 
     try:
-        conn = pymysql.connect(**db_config)
+        conn = openDB()
         cursor = conn.cursor()
 
         select_age_sql = """

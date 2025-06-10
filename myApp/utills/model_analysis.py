@@ -4,17 +4,12 @@ import pymysql
 import matplotlib.pyplot as plt
 import matplotlib.ticker as mtick
 import numpy as np
+from mydb.connectDB import openDB
 
 plt.rcParams['font.family'] = 'Malgun Gothic'
 plt.rcParams['axes.unicode_minus'] = False
 
-conn = pymysql.connect(
-    host="",
-    user='',
-    passwd='',
-    database='',
-    port=
-)
+conn = openDB()
 cursor = conn.cursor(pymysql.cursors.DictCursor)
 
 @st.cache_data(ttl=3600)

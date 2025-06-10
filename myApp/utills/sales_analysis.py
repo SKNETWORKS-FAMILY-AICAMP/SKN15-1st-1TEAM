@@ -1,15 +1,10 @@
 import pandas as pd
 import streamlit as st
 import pymysql
+from mydb.connectDB import openDB
 
 # DB 연결 및 커서 생성
-conn = pymysql.connect(
-    host="192.168.0.22",
-    user='team_1',
-    passwd='123',
-    database='sk15_1team',
-    port=3306
-)
+conn = openDB()
 cursor = conn.cursor(pymysql.cursors.DictCursor)
 
 # 브랜드명 캐싱 함수
