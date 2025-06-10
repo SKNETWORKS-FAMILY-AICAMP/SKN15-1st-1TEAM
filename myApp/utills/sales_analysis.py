@@ -4,7 +4,7 @@ import pymysql
 from mydb.connectDB import openDB
 
 # DB 연결 및 커서 생성
-conn = openDB()
+conn=openDB()
 cursor = conn.cursor(pymysql.cursors.DictCursor)
 
 # 브랜드명 캐싱 함수
@@ -34,7 +34,7 @@ def get_model_names():
 years = ['전체'] + list(range(2012, 2026))
 months = ['전체'] + list(range(1, 13))
 
-st.header("👑 자동차 판매 TOP 10")
+st.header("전체 판매 TOP10")
 
 final_brands = get_brands()
 
@@ -53,10 +53,10 @@ if st.button('검색', key='top10_search'):
             sql = f"""
             WITH this_year AS (
                 SELECT
-                    a.model_name as 모델명,
-                    b.brand as 제조사,
-                    SUM(a.volume) AS 총 판매량,
-                    RANK() OVER (ORDER BY SUM(a.volume) DESC) AS 연간순위(변동)
+                    a.model_name,
+                    b.brand,
+                    SUM(a.volume) AS total_volume,
+                    RANK() OVER (ORDER BY SUM(a.volume) DESC) AS year_rank
                 FROM car_model a
                 LEFT JOIN brand_logo b ON a.brand_code = b.codes
                 WHERE a.years = {year}
@@ -178,7 +178,7 @@ if st.button('검색', key='top10_search'):
     rows = cursor.fetchall()
     df = pd.DataFrame(rows)
 
-    # 3. 전년 순위 변화 표기
+    # 3. 전년 순위 변화 표기 및 한글 컬럼명 적용
     if 'last_year_rank' in df.columns:
         def rank_with_change(row):
             if pd.isnull(row['last_year_rank']):
@@ -190,13 +190,22 @@ if st.button('검색', key='top10_search'):
                 return f"{int(row['year_rank'])}({diff})"
             else:
                 return f"{int(row['year_rank'])}(0)"
-        df['year_rank_display'] = df.apply(rank_with_change, axis=1)
-        new_df=df[['model_name', 'brand', 'total_volume', 'year_rank_display']].rename(columns={'year_rank_display': 'year_rank'})
-
-        st.dataframe(new_df)
+        df['연간 순위(변동)'] = df.apply(rank_with_change, axis=1)
+        st.dataframe(
+            df[['model_name', 'brand', 'total_volume', '연간 순위(변동)']]
+            .rename(columns={
+                'model_name': '모델명',
+                'brand': '제조사',
+                'total_volume': '총 판매량'
+            })
+        )
     else:
-        df['year_rank'] = df['year_rank'].astype(int)
-        new_df=df[['model_name', 'brand', 'total_volume', 'year_rank']]
-
-        st.dataframe(new_df)
-    
+        df['연간 순위(변동)'] = df['year_rank'].astype(int)
+        st.dataframe(
+            df[['model_name', 'brand', 'total_volume', '연간 순위(변동)']]
+            .rename(columns={
+                'model_name': '모델명',
+                'brand': '제조사',
+                'total_volume': '총 판매량'
+            })
+        )
