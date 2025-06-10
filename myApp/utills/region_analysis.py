@@ -4,9 +4,6 @@ import pymysql
 import plotly.express as px
 from mydb.connectDB import openDB
 
-st.set_page_config(layout="wide")
-st.title("🚗 지역별 차량 등록 트렌드 분석")
-
 # 📌 데이터 조회
 query = """
 SELECT
@@ -48,7 +45,7 @@ with st.sidebar.expander("🔍 필터 선택", expanded=True):
             st.warning("연도 데이터가 없거나 형식이 올바르지 않습니다.")
             # 데이터프레임이 비어있지 않다면 최소/최대값 사용, 아니면 0,0
             year_range = (df['years'].min() if 'years' in df.columns and not df.empty else 0,
-                          df['years'].max() if 'years' in df.columns and not df.empty else 0)
+                            df['years'].max() if 'years' in df.columns and not df.empty else 0)
 
 
         # 도시 선택 (데이터에 city_1 컬럼 있어야 함)
@@ -63,8 +60,8 @@ with st.sidebar.expander("🔍 필터 선택", expanded=True):
 
             selected_cities = st.multiselect("도시 선택", options=city_options, default=initial_selected_cities)
         else:
-             st.warning("도시 (city_1) 데이터가 없습니다.")
-             selected_cities = []
+            st.warning("도시 (city_1) 데이터가 없습니다.")
+            selected_cities = []
 
         # 시군구 선택 (데이터에 city_1, city_2 컬럼 있어야 함)
         if 'city_1' in df.columns and 'city_2' in df.columns and selected_cities:
@@ -83,10 +80,10 @@ with st.sidebar.expander("🔍 필터 선택", expanded=True):
         if 'car_type_name' in df.columns:
             car_type_options = sorted(df['car_type_name'].unique())
             selected_car_types = st.multiselect("차량 종류", car_type_options,
-                               default=car_type_options)
+                                                default=car_type_options)
         else:
-             st.warning("차량 종류 (car_type_name) 데이터가 없습니다.")
-             selected_car_types = []
+            st.warning("차량 종류 (car_type_name) 데이터가 없습니다.")
+            selected_car_types = []
 
     else:
         st.warning("데이터를 불러오지 못했습니다. 필터를 설정할 수 없습니다.")
@@ -117,7 +114,7 @@ if not df.empty and year_range and selected_cities and selected_districts and se
 else:
     filtered = pd.DataFrame() # 데이터가 없거나 필터 조건이 유효하지 않을 경우 빈 DataFrame 생성
     if not df.empty: # 데이터 자체는 있지만 필터 결과가 없는 경우
-         st.info("선택된 필터 조건에 맞는 데이터가 없습니다.")
+        st.info("선택된 필터 조건에 맞는 데이터가 없습니다.")
     # 데이터가 처음부터 비어있다면 위의 초기 로드 오류 메시지가 나올 것임.
 
 
@@ -149,15 +146,15 @@ if not filtered.empty:
             last_year_volume = yearly_sum_overall.iloc[-1]
             second_last_year_volume = yearly_sum_overall.iloc[-2]
             if second_last_year_volume != 0: # 0으로 나누는 경우 방지
-                 delta_overall = last_year_volume - second_last_year_volume
-                 rate_overall = (delta_overall / second_last_year_volume) * 100
-                 col3.metric("전년 대비 변화율 (전체)", f"{rate_overall:.2f}%", delta=f"{delta_overall:+,} 대")
+                delta_overall = last_year_volume - second_last_year_volume
+                rate_overall = (delta_overall / second_last_year_volume) * 100
+                col3.metric("전년 대비 변화율 (전체)", f"{rate_overall:.2f}%", delta=f"{delta_overall:+,} 대")
             else:
-                 col3.metric("전년 대비 변화율 (전체)", "전년도 데이터 부족 또는 0")
+                col3.metric("전년 대비 변화율 (전체)", "전년도 데이터 부족 또는 0")
         else:
             col3.metric("전년 대비 변화율 (전체)", "데이터 부족")
     else:
-         col3.metric("전년 대비 변화율 (전체)", "데이터 부족")
+        col3.metric("전년 대비 변화율 (전체)", "데이터 부족")
 
 else:
     col1.metric("총 등록 대수", "0 대")
@@ -186,7 +183,7 @@ with tabs[0]:
         # 트렌드 차트 (전체 필터 기준)
         trend_chart_data = filtered.groupby(['date', 'car_type_name'])['total_volume'].sum().reset_index()
         fig_trend = px.line(trend_chart_data, x='date', y='total_volume', color='car_type_name', markers=True,
-                              labels={'total_volume': '등록 대수', 'date': '날짜', 'car_type_name': '차량 종류'})
+                            labels={'total_volume': '등록 대수', 'date': '날짜', 'car_type_name': '차량 종류'})
         st.plotly_chart(fig_trend, use_container_width=True)
     else:
         st.info("차트 생성에 필요한 데이터가 없습니다.")
@@ -199,7 +196,7 @@ with tabs[1]:
         # 도시별 분포 차트 (전체 필터 기준)
         region_chart_data = filtered.groupby('city_1')['total_volume'].sum().reset_index()
         fig_region = px.bar(region_chart_data, x='city_1', y='total_volume', color='city_1',
-                              labels={'city_1': '도시', 'total_volume': '등록 대수'})
+                            labels={'city_1': '도시', 'total_volume': '등록 대수'})
         st.plotly_chart(fig_region, use_container_width=True)
     else:
         st.info("차트 생성에 필요한 데이터가 없습니다.")

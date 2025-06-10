@@ -34,7 +34,7 @@ def get_model_names():
 years = ['전체'] + list(range(2012, 2026))
 months = ['전체'] + list(range(1, 13))
 
-st.header("전체 판매 TOP10")
+st.header("👑 자동차 판매 TOP 10")
 
 final_brands = get_brands()
 
@@ -54,8 +54,8 @@ if st.button('검색', key='top10_search'):
             WITH this_year AS (
                 SELECT
                     a.model_name as 모델명,
-                    b.brand as 제조사사,
-                    SUM(a.volume) AS 총 판매량량,
+                    b.brand as 제조사,
+                    SUM(a.volume) AS 총 판매량,
                     RANK() OVER (ORDER BY SUM(a.volume) DESC) AS 연간순위(변동)
                 FROM car_model a
                 LEFT JOIN brand_logo b ON a.brand_code = b.codes
@@ -191,7 +191,12 @@ if st.button('검색', key='top10_search'):
             else:
                 return f"{int(row['year_rank'])}(0)"
         df['year_rank_display'] = df.apply(rank_with_change, axis=1)
-        st.dataframe(df[['model_name', 'brand', 'total_volume', 'year_rank_display']].rename(columns={'year_rank_display': 'year_rank'}))
+        new_df=df[['model_name', 'brand', 'total_volume', 'year_rank_display']].rename(columns={'year_rank_display': 'year_rank'})
+
+        st.dataframe(new_df)
     else:
         df['year_rank'] = df['year_rank'].astype(int)
-        st.dataframe(df[['model_name', 'brand', 'total_volume', 'year_rank']])
+        new_df=df[['model_name', 'brand', 'total_volume', 'year_rank']]
+
+        st.dataframe(new_df)
+    
