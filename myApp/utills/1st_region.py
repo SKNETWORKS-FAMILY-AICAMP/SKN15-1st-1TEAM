@@ -6,15 +6,6 @@ import plotly.express as px
 st.set_page_config(layout="wide")
 st.title("🚗 지역별 차량 등록 트렌드 분석")
 
-# 📌 MySQL 연결
-conn = pymysql.connect(
-    host='192.168.0.22',
-    user='team_1',
-    passwd='123',
-    database='sk15_1team',
-    port=3306
-)
-
 # 📌 데이터 조회
 query = """
 SELECT
