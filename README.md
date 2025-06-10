@@ -6,7 +6,7 @@
 
 
 <p align="center">
-  <img src="./team_image.png" alt="처음아니조 팀 이미지" width="300"/>
+  <img src="./images/team_image.png" alt="처음아니조 팀 이미지" width="300"/>
 </p>
 
 
