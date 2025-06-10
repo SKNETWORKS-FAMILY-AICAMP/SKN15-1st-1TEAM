@@ -3,7 +3,7 @@ import pymysql
 import pandas as pd
 from mydb.connectDB import openDB
 
-def load_data():
+def faq_info():
     conn = openDB()
     query = """
     SELECT
@@ -20,7 +20,7 @@ def load_data():
     conn.close()
     return df
 
-df = load_data()
+df = faq_info()
 
 # 브랜드별 분리
 brand_list = df['brand'].dropna().unique().tolist()
@@ -70,3 +70,4 @@ for i, brand in enumerate(brand_list):
                         st.info("해당 카테고리에 검색 결과가 없습니다.")
         else:
             st.warning("카테고리 정보가 없습니다.")
+
