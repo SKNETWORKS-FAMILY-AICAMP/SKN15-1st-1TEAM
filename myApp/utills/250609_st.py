@@ -3,8 +3,8 @@ import streamlit as st
 import pymysql
 
 # DB 연결 및 커서 생성
-conn = pymysql.connect(host="192.168.0.22", user='team_1', passwd='123', database='sk15_1team', port=3306)
-cursor = conn.cursor(pymysql.cursors.DictCursor)
+# conn = pymysql.connect()
+# cursor = conn.cursor(pymysql.cursors.DictCursor)
 
 # 브랜드명 캐싱 함수
 @st.cache_data(ttl=3600)
